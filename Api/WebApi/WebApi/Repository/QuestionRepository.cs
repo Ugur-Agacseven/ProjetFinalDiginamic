@@ -2,42 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApi.Models;
+using WebApi.Models.Bdd;
 
 namespace WebApi.Repository
 {
     public class QuestionRepository
     {
-        readonly SatisfactionSurveyEntities SatisfactionSurveyEntities;
-        public QuestionRepository(SatisfactionSurveyEntities satisfactionSurveyEntities)
-        {
-            SatisfactionSurveyEntities = satisfactionSurveyEntities;
-        }
+        readonly SatisfactionSurveyEntities satisfactionSurveyEntities = new SatisfactionSurveyEntities();
+        //public QuestionRepository(SatisfactionSurveyEntities satisfactionSurveyEntities)
+        //{
+        //    SatisfactionSurveyEntities = satisfactionSurveyEntities;
+        //}
 
         public IEnumerable<Question> GetAllQuestions()
         {
-            IEnumerable<Question> questions = SatisfactionSurveyEntities.Question;
+            IEnumerable<Question> questions = satisfactionSurveyEntities.Question;
             return questions;
         }
 
         public Question GetQuestion(int id)
         {
-            return SatisfactionSurveyEntities.Question.FirstOrDefault(question => question.Id == id);
+            return satisfactionSurveyEntities.Question.FirstOrDefault(question => question.Id == id);
         }
 
         public int AddQuestion(Question question)
         {
-            SatisfactionSurveyEntities.Question.Add(question);
-            SatisfactionSurveyEntities.SaveChanges();
-            return question.Id;
+            satisfactionSurveyEntities.Question.Add(question);
+            satisfactionSurveyEntities.SaveChanges();
+            return question.id;
         }
 
         public int EditQuestion(Question question) //Possibilité de passer seulement les propriétés au lieu d'un objets si nécessaire
         {
-            var questionToEdit = SatisfactionSurveyEntities.Question.FirstOrDefault(f => f.Id == question.Id);
+            var questionToEdit = satisfactionSurveyEntities.Question.FirstOrDefault(f => f.id == question.id);
 
-            if (!string.IsNullOrEmpty(question.Contenu))
-                questionToEdit.Contenu = question.Contenu;
+            if (!string.IsNullOrEmpty(question.contenu))
+                questionToEdit.contenu = question.contenu;
 
                 questionToEdit.Composant = question.Composant;
                 questionToEdit.Reponse = question.Reponse;

@@ -237,6 +237,7 @@
     <Compile Include="Controllers\ApiControllers\FormulaireApiController.cs" />
     <Compile Include="Controllers\ApiControllers\QuestionApiController.cs" />
     <Compile Include="Controllers\ApiControllers\ReponseController.cs" />
+    <Compile Include="Controllers\BackOfficeControllers\FormulaireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -244,46 +245,52 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Composant.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
+    <Compile Include="Models\Bdd\ChoixReponse.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Formulaire.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
+    <Compile Include="Models\Bdd\Composant.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\Formulaire.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\Question.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\Reponse.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\SatisfactionSurvey.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SatisfactionSurvey.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\SatisfactionSurvey.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\SatisfactionSurvey.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SatisfactionSurvey.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\Sondage.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\Sonde.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\sysdiagrams.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\ThemeQuestion.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bdd\TypeReponse.cs">
+      <DependentUpon>SatisfactionSurvey.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MockBDD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MockBDD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MockBDD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MockBDD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MockBDD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Question.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Reponse.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sondage.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sonde.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TypeReponse.cs">
-      <DependentUpon>MockBDD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Repository\FormulaireRepository.cs" />
@@ -301,15 +308,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\MockBDD.Context.tt">
+    <Content Include="Models\Bdd\SatisfactionSurvey.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MockBDD.edmx</DependentUpon>
-      <LastGenOutput>MockBDD.Context.cs</LastGenOutput>
+      <DependentUpon>SatisfactionSurvey.edmx</DependentUpon>
+      <LastGenOutput>SatisfactionSurvey.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MockBDD.tt">
+    <Content Include="Models\Bdd\SatisfactionSurvey.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MockBDD.edmx</DependentUpon>
-      <LastGenOutput>MockBDD.cs</LastGenOutput>
+      <DependentUpon>SatisfactionSurvey.edmx</DependentUpon>
+      <LastGenOutput>SatisfactionSurvey.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -335,12 +342,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\MockBDD.edmx">
+    <EntityDeploy Include="Models\Bdd\SatisfactionSurvey.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MockBDD.Designer.cs</LastGenOutput>
+      <LastGenOutput>SatisfactionSurvey.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\MockBDD.edmx.diagram">
-      <DependentUpon>MockBDD.edmx</DependentUpon>
+    <Content Include="Models\Bdd\SatisfactionSurvey.edmx.diagram">
+      <DependentUpon>SatisfactionSurvey.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -370,7 +377,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\BackOfficeControllers\" />
+    <Folder Include="Views\Formulaire\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

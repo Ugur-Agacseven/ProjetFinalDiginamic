@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SatisfactionSurveyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChoixReponse">
+    <Key>
+      <PropertyRef Name="IdSondage" />
+      <PropertyRef Name="IdReponse" />
+    </Key>
+    <Property Name="IdSondage" Type="int" Nullable="false" />
+    <Property Name="IdReponse" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Composant">
+    <Key>
+      <PropertyRef Name="IdFormulaire" />
+      <PropertyRef Name="IdQuestion" />
+      <PropertyRef Name="IdTypeReponse" />
+    </Key>
+    <Property Name="IdFormulaire" Type="int" Nullable="false" />
+    <Property Name="IdQuestion" Type="int" Nullable="false" />
+    <Property Name="IdTypeReponse" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Formulaire">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Theme" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contenu" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reponse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contenu" Type="varchar(max)" Nullable="false" />
+    <Property Name="Commentaire" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdQuestion" Type="int" />
+  </EntityType>
+  <EntityType Name="Sondage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdFormulaire" Type="int" />
+    <Property Name="IdSonde" Type="int" />
+  </EntityType>
+  <EntityType Name="Sonde">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Sexe" Type="bit" />
+    <Property Name="Localisation" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TypeReponse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ChoixRepo__IdRep__37A5467C">
+    <End Role="Reponse" Type="Self.Reponse" Multiplicity="1" />
+    <End Role="ChoixReponse" Type="Self.ChoixReponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reponse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChoixReponse">
+        <PropertyRef Name="IdReponse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChoixRepo__IdSon__36B12243">
+    <End Role="Sondage" Type="Self.Sondage" Multiplicity="1" />
+    <End Role="ChoixReponse" Type="Self.ChoixReponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sondage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChoixReponse">
+        <PropertyRef Name="IdSondage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Composant__IdFor__2C3393D0">
+    <End Role="Formulaire" Type="Self.Formulaire" Multiplicity="1" />
+    <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formulaire">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Composant">
+        <PropertyRef Name="IdFormulaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Composant__IdQue__2D27B809">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Composant">
+        <PropertyRef Name="IdQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Composant__IdTyp__2E1BDC42">
+    <End Role="TypeReponse" Type="Self.TypeReponse" Multiplicity="1" />
+    <End Role="Composant" Type="Self.Composant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeReponse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Composant">
+        <PropertyRef Name="IdTypeReponse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reponse__IdQuest__276EDEB3">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Reponse" Type="Self.Reponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reponse">
+        <PropertyRef Name="IdQuestion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sondage__IdFormu__32E0915F">
+    <End Role="Formulaire" Type="Self.Formulaire" Multiplicity="0..1" />
+    <End Role="Sondage" Type="Self.Sondage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formulaire">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sondage">
+        <PropertyRef Name="IdFormulaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sondage__IdSonde__33D4B598">
+    <End Role="Sonde" Type="Self.Sonde" Multiplicity="0..1" />
+    <End Role="Sondage" Type="Self.Sondage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sonde">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sondage">
+        <PropertyRef Name="IdSonde" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SatisfactionSurveyModelStoreContainer">
+    <EntitySet Name="ChoixReponse" EntityType="Self.ChoixReponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Composant" EntityType="Self.Composant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Formulaire" EntityType="Self.Formulaire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reponse" EntityType="Self.Reponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sondage" EntityType="Self.Sondage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sonde" EntityType="Self.Sonde" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeReponse" EntityType="Self.TypeReponse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChoixRepo__IdRep__37A5467C" Association="Self.FK__ChoixRepo__IdRep__37A5467C">
+      <End Role="Reponse" EntitySet="Reponse" />
+      <End Role="ChoixReponse" EntitySet="ChoixReponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChoixRepo__IdSon__36B12243" Association="Self.FK__ChoixRepo__IdSon__36B12243">
+      <End Role="Sondage" EntitySet="Sondage" />
+      <End Role="ChoixReponse" EntitySet="ChoixReponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Composant__IdFor__2C3393D0" Association="Self.FK__Composant__IdFor__2C3393D0">
+      <End Role="Formulaire" EntitySet="Formulaire" />
+      <End Role="Composant" EntitySet="Composant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Composant__IdQue__2D27B809" Association="Self.FK__Composant__IdQue__2D27B809">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Composant" EntitySet="Composant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Composant__IdTyp__2E1BDC42" Association="Self.FK__Composant__IdTyp__2E1BDC42">
+      <End Role="TypeReponse" EntitySet="TypeReponse" />
+      <End Role="Composant" EntitySet="Composant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reponse__IdQuest__276EDEB3" Association="Self.FK__Reponse__IdQuest__276EDEB3">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Reponse" EntitySet="Reponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sondage__IdFormu__32E0915F" Association="Self.FK__Sondage__IdFormu__32E0915F">
+      <End Role="Formulaire" EntitySet="Formulaire" />
+      <End Role="Sondage" EntitySet="Sondage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sondage__IdSonde__33D4B598" Association="Self.FK__Sondage__IdSonde__33D4B598">
+      <End Role="Sonde" EntitySet="Sonde" />
+      <End Role="Sondage" EntitySet="Sondage" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

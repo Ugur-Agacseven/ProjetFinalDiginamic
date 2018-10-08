@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SatisfactionSurveyModelStoreContainer" CdmEntityContainer="SatisfactionSurveyEntities">
+    <EntitySetMapping Name="Composant">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.Composant">
+        <MappingFragment StoreEntitySet="Composant">
+          <ScalarProperty Name="IdFormulaire" ColumnName="IdFormulaire" />
+          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+          <ScalarProperty Name="IdTypeReponse" ColumnName="IdTypeReponse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formulaire">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.Formulaire">
+        <MappingFragment StoreEntitySet="Formulaire">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Theme" ColumnName="Theme" />
+          <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reponse">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.Reponse">
+        <MappingFragment StoreEntitySet="Reponse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Contenu" ColumnName="Contenu" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sondage">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.Sondage">
+        <MappingFragment StoreEntitySet="Sondage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdFormulaire" ColumnName="IdFormulaire" />
+          <ScalarProperty Name="IdSonde" ColumnName="IdSonde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sonde">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.Sonde">
+        <MappingFragment StoreEntitySet="Sonde">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="Localisation" ColumnName="Localisation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeReponse">
+      <EntityTypeMapping TypeName="SatisfactionSurveyModel.TypeReponse">
+        <MappingFragment StoreEntitySet="TypeReponse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ChoixReponse" TypeName="SatisfactionSurveyModel.ChoixReponse" StoreEntitySet="ChoixReponse">
+      <EndProperty Name="Reponse">
+        <ScalarProperty Name="Id" ColumnName="IdReponse" />
+      </EndProperty>
+      <EndProperty Name="Sondage">
+        <ScalarProperty Name="Id" ColumnName="IdSondage" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

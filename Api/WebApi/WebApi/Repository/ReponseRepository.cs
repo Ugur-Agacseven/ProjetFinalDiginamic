@@ -2,54 +2,54 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApi.Models;
+using WebApi.Models.Bdd;
 
 namespace WebApi.Repository
 {
     public class ReponseRepository
     {
-    readonly SatisfactionSurveyEntities SatisfactionSurveyEntities;
-    public ReponseRepository(SatisfactionSurveyEntities satisfactionSurveyEntities)
-        {
-            satisfactionSurveyEntities = SatisfactionSurveyEntities;
-        }
+    readonly SatisfactionSurveyEntities satisfactionSurveyEntities = new SatisfactionSurveyEntities();
+    //public ReponseRepository(SatisfactionSurveyEntities satisfactionSurveyEntities)
+    //    {
+    //        satisfactionSurveyEntities = SatisfactionSurveyEntities;
+    //    }
 
         public IEnumerable<Reponse> GetAllReponses()
         {
-            IEnumerable<Reponse> reponses = SatisfactionSurveyEntities.Reponse;
+            IEnumerable<Reponse> reponses = satisfactionSurveyEntities.Reponse;
             return reponses;
         }
 
         public Reponse GetReponse(int id)
         {
-            return SatisfactionSurveyEntities.Reponse.FirstOrDefault(Reponse => Reponse.Id == id);
+            return satisfactionSurveyEntities.Reponse.FirstOrDefault(Reponse => Reponse.id == id);
         }
 
         public int AddFormulaire(Reponse reponse)
         {
-            SatisfactionSurveyEntities.Reponse.Add(reponse);
-            SatisfactionSurveyEntities.SaveChanges();
-            return reponse.Id;
+            satisfactionSurveyEntities.Reponse.Add(reponse);
+            satisfactionSurveyEntities.SaveChanges();
+            return reponse.id;
         }
 
         public int EditReponse(Reponse reponse) //Possibilité de passer seulement les propriétés au lieu d'un objets si nécessaire
         {
-            var reponseToEdit = SatisfactionSurveyEntities.Reponse.FirstOrDefault(f => f.Id == reponse.Id);
+            var reponseToEdit = satisfactionSurveyEntities.Reponse.FirstOrDefault(f => f.id == reponse.id);
 
-            if (!string.IsNullOrEmpty(reponse.Contenu))
-                reponseToEdit.Contenu = reponse.Contenu;
+            if (!string.IsNullOrEmpty(reponse.contenu))
+                reponseToEdit.contenu = reponse.contenu;
 
-           
 
-            SatisfactionSurveyEntities.SaveChanges();
 
-            return reponse.Id;
+            satisfactionSurveyEntities.SaveChanges();
+
+            return reponse.id;
         }
 
         public void DeleteFormulaire(int Id)
         {
-            SatisfactionSurveyEntities.Reponse.Remove(GetReponse(Id));
-            SatisfactionSurveyEntities.SaveChanges();
+            satisfactionSurveyEntities.Reponse.Remove(GetReponse(Id));
+            satisfactionSurveyEntities.SaveChanges();
         }
 
 
