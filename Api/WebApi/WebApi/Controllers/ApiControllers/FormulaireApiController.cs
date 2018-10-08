@@ -5,8 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Mvc;
-using WebApi.Models;
+using WebApi.Models.Bdd;
 using WebApi.Repository;
 
 namespace WebApi.Controllers.ApiControllers
@@ -14,6 +13,7 @@ namespace WebApi.Controllers.ApiControllers
     public class FormulaireApiController : ApiController
     {
         public FormulaireRepository formulairectrl = new FormulaireRepository();
+        public SondageRepository sondagectrl = new SondageRepository();
 
         //Rappatrier les formulaires valides
         public IHttpActionResult GetFormulaires()
@@ -31,11 +31,12 @@ namespace WebApi.Controllers.ApiControllers
 
 
         // Envoi des réponses dans la table ChoixRéponse
-        //[HttpPost]
-        //public IHttpActionResult(){
-        /// Poster les réponses 
-
-       //}
+        [HttpPost]
+        public  IHttpActionResult PostSondage(Sondage sondage)
+        {
+            
+            return Ok(sondagectrl.AddSondage(sondage));
+        }
 
 
     }

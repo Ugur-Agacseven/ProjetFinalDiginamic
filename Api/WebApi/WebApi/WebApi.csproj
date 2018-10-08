@@ -296,6 +296,7 @@
     <Compile Include="Repository\FormulaireRepository.cs" />
     <Compile Include="Repository\QuestionRepository.cs" />
     <Compile Include="Repository\ReponseRepository.cs" />
+    <Compile Include="Repository\SondageRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

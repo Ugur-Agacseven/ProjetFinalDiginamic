@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dfe92702873b404faf5d024e048b7b89" Name="Diagram1">
+      <Diagram DiagramId="dfe92702873b404faf5d024e048b7b89" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="SatisfactionSurveyModel.ChoixReponse" Width="1.5" PointX="12" PointY="4.25" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.Composant" Width="1.5" PointX="9.75" PointY="3.75" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.Formulaire" Width="1.5" PointX="7.5" PointY="3.625" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.Question" Width="1.5" PointX="2.5" PointY="1" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.Reponse" Width="1.5" PointX="9.75" PointY="7.5" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.Sondage" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SatisfactionSurveyModel.Sonde" Width="1.5" PointX="7.5" PointY="7.625" />
+        <EntityTypeShape EntityType="SatisfactionSurveyModel.Sonde" Width="1.5" PointX="6" PointY="8.125" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.sysdiagrams" Width="1.5" PointX="12.5" PointY="6.875" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.ThemeQuestion" Width="1.5" PointX="8.25" PointY="11" />
         <EntityTypeShape EntityType="SatisfactionSurveyModel.TypeReponse" Width="1.5" PointX="7.5" PointY="13.5" />
@@ -23,6 +23,7 @@
         <AssociationConnector Association="SatisfactionSurveyModel.FK__Question__idThem__05D8E0BE" />
         <AssociationConnector Association="SatisfactionSurveyModel.FK__Reponse__idQuest__6B24EA82" />
         <AssociationConnector Association="SatisfactionSurveyModel.FK__Sondage__idSonde__778AC167" />
+        <AssociationConnector Association="SatisfactionSurveyModel.FK__ChoixRepo__idRep__06CD04F7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

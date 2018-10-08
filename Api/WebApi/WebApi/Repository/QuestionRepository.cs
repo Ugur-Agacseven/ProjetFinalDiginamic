@@ -22,7 +22,7 @@ namespace WebApi.Repository
 
         public Question GetQuestion(int id)
         {
-            return satisfactionSurveyEntities.Question.FirstOrDefault(question => question.Id == id);
+            return satisfactionSurveyEntities.Question.FirstOrDefault(question => question.id == id);
         }
 
         public int AddQuestion(Question question)
@@ -44,15 +44,15 @@ namespace WebApi.Repository
 
 
 
-            SatisfactionSurveyEntities.SaveChanges();
+            satisfactionSurveyEntities.SaveChanges();
 
-            return question.Id;
+            return question.id;
         }
 
         public void DeleteQuestion(int Id)
         {
-            SatisfactionSurveyEntities.Question.Remove(GetQuestion(Id));
-            SatisfactionSurveyEntities.SaveChanges();
+            satisfactionSurveyEntities.Question.Remove(GetQuestion(Id));
+            satisfactionSurveyEntities.SaveChanges();
         }
 
 

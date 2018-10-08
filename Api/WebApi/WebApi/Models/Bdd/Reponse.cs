@@ -14,11 +14,19 @@ namespace WebApi.Models.Bdd
     
     public partial class Reponse
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Reponse()
+        {
+            this.ChoixReponse = new HashSet<ChoixReponse>();
+        }
+    
         public int id { get; set; }
         public string contenu { get; set; }
         public string commentaire { get; set; }
         public Nullable<int> idQuestion { get; set; }
     
         public virtual Question Question { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChoixReponse> ChoixReponse { get; set; }
     }
 }

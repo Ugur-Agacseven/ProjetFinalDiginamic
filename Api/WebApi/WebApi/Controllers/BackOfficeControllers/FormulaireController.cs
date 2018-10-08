@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApi.Models;
+using WebApi.Models.Bdd;
 using WebApi.Repository;
 
 namespace WebApi.Controllers.BackOfficeControllers
@@ -70,7 +71,7 @@ namespace WebApi.Controllers.BackOfficeControllers
             //{
             //    return View();
             //}
-        }
+        
 
         // GET: Formulaire/Delete/5
         public ActionResult Delete(int id)

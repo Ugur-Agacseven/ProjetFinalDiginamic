@@ -11,6 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idSondage" Type="int" />
+          <Property Name="idReponse" Type="int" />
         </EntityType>
         <EntityType Name="Composant">
           <Key>
@@ -92,6 +93,18 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <Association Name="FK__ChoixRepo__idRep__06CD04F7">
+          <End Role="Reponse" Type="Self.Reponse" Multiplicity="0..1" />
+          <End Role="ChoixReponse" Type="Self.ChoixReponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reponse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChoixReponse">
+              <PropertyRef Name="idReponse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ChoixRepo__idSon__7A672E12">
           <End Role="Sondage" Type="Self.Sondage" Multiplicity="0..1" />
           <End Role="ChoixReponse" Type="Self.ChoixReponse" Multiplicity="*" />
@@ -199,6 +212,10 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThemeQuestion" EntityType="Self.ThemeQuestion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeReponse" EntityType="Self.TypeReponse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChoixRepo__idRep__06CD04F7" Association="Self.FK__ChoixRepo__idRep__06CD04F7">
+            <End Role="Reponse" EntitySet="Reponse" />
+            <End Role="ChoixReponse" EntitySet="ChoixReponse" />
+          </AssociationSet>
           <AssociationSet Name="FK__ChoixRepo__idSon__7A672E12" Association="Self.FK__ChoixRepo__idSon__7A672E12">
             <End Role="Sondage" EntitySet="Sondage" />
             <End Role="ChoixReponse" EntitySet="ChoixReponse" />
@@ -279,6 +296,10 @@
             <End Role="Sonde" EntitySet="Sonde" />
             <End Role="Sondage" EntitySet="Sondage" />
           </AssociationSet>
+          <AssociationSet Name="FK__ChoixRepo__idRep__06CD04F7" Association="SatisfactionSurveyModel.FK__ChoixRepo__idRep__06CD04F7">
+            <End Role="Reponse" EntitySet="Reponse" />
+            <End Role="ChoixReponse" EntitySet="ChoixReponse" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ChoixReponse">
           <Key>
@@ -287,6 +308,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idSondage" Type="Int32" />
           <NavigationProperty Name="Sondage" Relationship="SatisfactionSurveyModel.FK__ChoixRepo__idSon__7A672E12" FromRole="ChoixReponse" ToRole="Sondage" />
+          <Property Name="idReponse" Type="Int32" />
+          <NavigationProperty Name="Reponse" Relationship="SatisfactionSurveyModel.FK__ChoixRepo__idRep__06CD04F7" FromRole="ChoixReponse" ToRole="Reponse" />
         </EntityType>
         <EntityType Name="Composant">
           <Key>
@@ -334,6 +357,7 @@
           <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="idQuestion" Type="Int32" />
           <NavigationProperty Name="Question" Relationship="SatisfactionSurveyModel.FK__Reponse__idQuest__6B24EA82" FromRole="Reponse" ToRole="Question" />
+          <NavigationProperty Name="ChoixReponse" Relationship="SatisfactionSurveyModel.FK__ChoixRepo__idRep__06CD04F7" FromRole="Reponse" ToRole="ChoixReponse" />
         </EntityType>
         <EntityType Name="Sondage">
           <Key>
@@ -479,6 +503,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ChoixRepo__idRep__06CD04F7">
+          <End Type="SatisfactionSurveyModel.Reponse" Role="Reponse" Multiplicity="0..1" />
+          <End Type="SatisfactionSurveyModel.ChoixReponse" Role="ChoixReponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reponse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChoixReponse">
+              <PropertyRef Name="idReponse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -488,6 +524,7 @@
           <EntitySetMapping Name="ChoixReponse">
             <EntityTypeMapping TypeName="SatisfactionSurveyModel.ChoixReponse">
               <MappingFragment StoreEntitySet="ChoixReponse">
+                <ScalarProperty Name="idReponse" ColumnName="idReponse" />
                 <ScalarProperty Name="idSondage" ColumnName="idSondage" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

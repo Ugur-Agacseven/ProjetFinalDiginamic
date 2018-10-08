@@ -16,7 +16,9 @@ namespace WebApi.Models.Bdd
     {
         public int id { get; set; }
         public Nullable<int> idSondage { get; set; }
+        public Nullable<int> idReponse { get; set; }
     
         public virtual Sondage Sondage { get; set; }
+        public virtual Reponse Reponse { get; set; }
     }
 }

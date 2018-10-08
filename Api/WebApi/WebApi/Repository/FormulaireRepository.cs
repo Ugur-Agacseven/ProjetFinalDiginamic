@@ -24,31 +24,31 @@ namespace WebApi.Repository
 
         public Formulaire GetFormulaire(int id)
         {
-            return satisfactionSurveyEntities.Formulaire.FirstOrDefault(formulaire => formulaire.Id == id);
+            return satisfactionSurveyEntities.Formulaire.FirstOrDefault(formulaire => formulaire.id == id);
         }
 
         public string AddFormulaire(Formulaire formulaire)
         {
             satisfactionSurveyEntities.Formulaire.Add(formulaire);
             satisfactionSurveyEntities.SaveChanges();
-            return formulaire.Titre;
+            return formulaire.titre;
         }
 
         public string EditFormulaire(Formulaire formulaire) //Possibilité de passer seulement les propriétés au lieu d'un objets si nécessaire
         {
-            var formulaireToEdit = satisfactionSurveyEntities.Formulaire.FirstOrDefault(f => f.Id == formulaire.Id);
+            var formulaireToEdit = satisfactionSurveyEntities.Formulaire.FirstOrDefault(f => f.id == formulaire.id);
 
-            if (!string.IsNullOrEmpty(formulaire.Description))
-                formulaireToEdit.Description = formulaire.Description;
+            if (!string.IsNullOrEmpty(formulaire.description))
+                formulaireToEdit.description = formulaire.description;
 
-            if (!string.IsNullOrEmpty(formulaire.Titre))
-                formulaireToEdit.Titre = formulaire.Titre;
+            if (!string.IsNullOrEmpty(formulaire.titre))
+                formulaireToEdit.titre = formulaire.titre;
 
             formulaireToEdit.Composant = formulaire.Composant;
 
             satisfactionSurveyEntities.SaveChanges();
 
-            return formulaire.Titre;
+            return formulaire.titre;
         }
 
         public void DeleteFormulaire(int Id)
