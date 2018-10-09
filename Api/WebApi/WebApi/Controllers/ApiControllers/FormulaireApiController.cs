@@ -13,7 +13,7 @@ namespace WebApi.Controllers.ApiControllers
     public class FormulaireApiController : ApiController
     {
         public FormulaireRepository formulairectrl = new FormulaireRepository();
-        public SondageRepository sondagectrl = new SondageRepository();
+        //public SondageRepository sondagectrl = new SondageRepository();
 
         //Rappatrier les formulaires valides
         public IHttpActionResult GetFormulaires()
@@ -30,13 +30,12 @@ namespace WebApi.Controllers.ApiControllers
         }
 
 
-        // Envoi des réponses dans la table ChoixRéponse
-        [HttpPost]
-        public  IHttpActionResult PostSondage(Sondage sondage)
-        {
-            
-            return Ok(sondagectrl.AddSondage(sondage));
-        }
+        // Pas nécessaire pour les utilisateurs hors admin
+        //[HttpPost]
+        //public IHttpActionResult PostFormulaire(Formulaire form)
+        //{
+        //    return Ok(formulairectrl.AddFormulaire(form));
+        //}
 
 
     }
